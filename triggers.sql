@@ -151,7 +151,7 @@ CREATE OR REPLACE FUNCTION check_credit_parking()
 RETURNS TRIGGER AS $$
 BEGIN
  
-  IF (SELECT credit FROM car join account on car.car_driver = account.acc_owner WHERE NEW.c_id = c_id) > 0 THEN
+  IF (SELECT credit FROM car join account on car.car_driver = account.acc_owner WHERE NEW.cid = cid) > 0 THEN
     RETURN NEW;
 	
   ELSE
@@ -269,7 +269,7 @@ EXECUTE FUNCTION create_passengers_receipt();
 
 
 -- when a transportation is updated
-create OR REPLACE function find_distance(input_path_id integer) returns int as $$
+create OR REPLACE function find_distance(input_path_id varchar(16)) returns int as $$
 declare
   output int;
   current_row record;
@@ -285,13 +285,15 @@ begin
 end;
 $$ language plpgsql;
 
+
+
 CREATE OR REPLACE FUNCTION create_transportation_receipt()
 RETURNS TRIGGER AS $$
 DECLARE
     money_amount NUMERIC(10, 2);
 BEGIN
    IF NEW.end_time is not null THEN
-   		money_amount := find_distance(NEW.path_id) * (SELECT price_per_km FROM transport join network on public_transport.t_type = network.network_type where NEW.transport_id = transport_id);
+   		money_amount := find_distance(NEW.path_id) * (SELECT  cost_per_km FROM public_transport join network on public_transport.t_type = network.network_type where NEW.transport_id = transport_id);
    		
 		UPDATE receipt
 			SET issue_time = NEW.end_time , price = money_amount

@@ -171,42 +171,7 @@ insert into station_sequence
 			('Wellesley','Bay', 7 ,'1:10') ,
 			('Bay','Rose_Dale', 3 ,'0:30');
 
-
-
-      ------------------------------------------------------------------
-
--- Create networks
-INSERT INTO network (network_type, cost_per_km)
-VALUES
-  ('taxi', 3000),
-  ('bus', 1000),
-  ('subway', 1500);
-
--- Create taxis
-INSERT INTO public_transport (t_type, transport_id, driver_id)
-VALUES
-  ('taxi', 'taxi1', '111-11-2222'),
-  ('taxi', 'taxi2', '333-33-8888'),
-  ('taxi', 'taxi3', '555-55-5555'),
-  ('taxi', 'taxi4', '777-77-7777'),
-  ('taxi', 'taxi5', '999-99-9999');
-
--- Create buses
-INSERT INTO public_transport (t_type, transport_id, driver_id)
-VALUES
-  ('bus', 'bus1', '444-44-1111'),
-  ('bus', 'bus2', '666-66-6666'),
-  ('bus', 'bus3', '888-88-8888'),
-  ('bus', 'bus4', '012-01-2345');
-
--- Create subways
-INSERT INTO public_transport (t_type, transport_id, driver_id)
-VALUES
-  ('subway', 'subway1', '222-22-6666'),
-  ('subway', 'subway2', '123-12-3456');
-
---------------------------------------------------------
-
+      
 INSERT INTO path
 	values('Spa->RoseD1' , 'subway'),
 		  ('Spa->RoseD2' , 'taxi'),
@@ -258,3 +223,39 @@ INSERT INTO position_in_path
 		  ('Spadina' , 'Spa->Queen' , 'start'),
 		  ('Spadina_TTC' , 'Spa->Queen' , 'mid'),
 		  ('Queen_park' , 'Spa->Queen' , 'end')
+
+
+
+      ------------------------------------------------------------------
+
+-- Create networks
+INSERT INTO network (network_type, cost_per_km)
+VALUES
+  ('taxi', 3000),
+  ('bus', 1000),
+  ('subway', 1500);
+
+-- Create taxis
+INSERT INTO public_transport (t_type, transport_id, driver_id)
+VALUES
+  ('taxi', 'taxi1', '111-11-2222'),
+  ('taxi', 'taxi2', '333-33-8888'),
+  ('taxi', 'taxi3', '555-55-5555'),
+  ('taxi', 'taxi4', '777-77-7777'),
+  ('taxi', 'taxi5', '999-99-9999');
+
+-- Create buses
+INSERT INTO public_transport (t_type, transport_id, driver_id)
+VALUES
+  ('bus', 'bus1', '444-44-1111'),
+  ('bus', 'bus2', '666-66-6666'),
+  ('bus', 'bus3', '888-88-8888'),
+  ('bus', 'bus4', '012-01-2345');
+
+-- Create subways
+INSERT INTO public_transport (t_type, transport_id, driver_id)
+VALUES
+  ('subway', 'subway1', '222-22-6666'),
+  ('subway', 'subway2', '123-12-3456');
+
+--------------------------------------------------------
