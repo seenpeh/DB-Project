@@ -47,6 +47,7 @@ EXECUTE FUNCTION create_parking_receipt();
 ----------------------------------------------
 
 
+
 -- when a car leaves parking
 CREATE OR REPLACE FUNCTION create_finish_parking()
 RETURNS TRIGGER AS $$
@@ -55,7 +56,11 @@ BEGIN
 
 	IF NEW.end_time is not null THEN
 	
-		money_amount := (select (ceiling(TIMESTAMPDIFF(MIN , new.end_time , new.start_time ) / 60.0) * price_per_hour) FROM parking where parking.pid = new.pid);
+		money_amount := (SELECT 
+  			ceiling (  (EXTRACT(HOUR FROM (AGE(NEW.end_time , NEW.start_time))) * 3600
+  			+ EXTRACT(Minute FROM (AGE(NEW.end_time, NEW.start_time))) * 60
+  			+ EXTRACT(second FROM (AGE(NEW.end_time, NEW.start_time)))) / 3600.0) 
+						 * price_per_hour FROM parking where parking.pid = new.pid);
 
 		UPDATE receipt
 			SET issue_time = NEW.end_time , price = money_amount
@@ -167,7 +172,7 @@ CREATE OR REPLACE FUNCTION check_credit_transportation()
 RETURNS TRIGGER AS $$
 BEGIN
  
-  IF (SELECT credit FROM passengers join account on passengers.ssn = account.acc_owner WHERE NEW.receipt_id = receipt_id) > 0 THEN
+  IF (SELECT credit FROM account WHERE NEW.ssn = acc_owner) > 0 THEN
     RETURN NEW;
 	
   ELSE
@@ -177,8 +182,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER check_credit_transportation
-BEFORE INSERT ON transportation_receipt
+CREATE OR REPLACE TRIGGER check_credit_transportation
+BEFORE INSERT ON passengers
 FOR EACH ROW
 EXECUTE FUNCTION check_credit_transportation();
 
@@ -264,14 +269,14 @@ EXECUTE FUNCTION create_passengers_receipt();
 
 
 -- when a transportation is updated
-create OR REPLACE function find_distance(path_id integer) returns int as $$
+create OR REPLACE function find_distance(input_path_id integer) returns int as $$
 declare
   output int;
   current_row record;
 begin
   output := 0;
   
-  for current_row in select distance from station_sequence where src_station in (select pip.sname from position_in_path as pip where pip.path_id = path_id) and dst_station in (select pip.sname from position_in_path as pip where pip.path_id = path_id)
+  for current_row in select distance from station_sequence where src_station in (select pip.sname from position_in_path as pip where pip.path_id = input_path_id) and dst_station in (select pip.sname from position_in_path as pip where pip.path_id = input_path_id)
     loop
     output := output + current_row.distance;
     end loop;
@@ -285,7 +290,7 @@ RETURNS TRIGGER AS $$
 DECLARE
     money_amount NUMERIC(10, 2);
 BEGIN
-   IF NEW.end_time <> OLD.end_time THEN
+   IF NEW.end_time is not null THEN
    		money_amount := find_distance(NEW.path_id) * (SELECT price_per_km FROM transport join network on public_transport.t_type = network.network_type where NEW.transport_id = transport_id);
    		
 		UPDATE receipt
