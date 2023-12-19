@@ -138,8 +138,10 @@ VALUES
   ('car6', 'BMW', 'White', '777-77-7777', '777-77-7777'),   -- Driver is a family member
   ('car7', 'Mercedes', 'Gray', '888-88-8888', '777-77-7777'),   -- Driver is a family member
   ('car8', 'Audi', 'Yellow', '999-99-9999', '888-88-8888'),  -- Driver is a family member
-  ('car9', 'Mazda', 'Orange', '012-01-2345', '999-99-9999'),  -- Driver is a family member
-  ('car10', 'Hyundai', 'Purple', '123-12-3456', '012-01-2345');  -- Driver is a family member
+  ('car9', 'Mazda', 'Orange', '012-01-2345', '999-99-9999'),
+  ('car10', 'Hyundai', 'Purple', '123-12-3456', '012-01-2345'),
+  ('car11', 'Hyundai', 'Blue', '222-22-5555', '222-22-5555'),
+  ('car12', 'Hyundai', 'Blue', '333-33-0000', '333-33-0000');  -- Driver is a family member;  -- Driver is a family member
 
 
 ------------------------------------------------------------------------------------
@@ -147,14 +149,15 @@ VALUES
 -- Create parking lots
 INSERT INTO parking (pid, pname, capacity, price_per_hour, x, y, start_time, end_time)
 VALUES
-  ('parking1', 'Central Parking', 3, 1000, ROUND(RANDOM() * 2000), ROUND(RANDOM() * 2000), '08:00', '18:00'),
+  ('parking1', 'Central Parking', 5, 1000, ROUND(RANDOM() * 2000), ROUND(RANDOM() * 2000), '08:00', '18:00'),
   ('parking2', 'City Plaza Parking', 6, 2000, ROUND(RANDOM() * 2000), ROUND(RANDOM() * 2000), '09:00', '20:00');
 
 -------------------------------------------------------------------------------------
 
 insert into station 
 	values('Spadina', -100 , 2100) , ('Spadina_TTC', -80 ,1800) , ('ST_George', 60 ,1852) , ('Bay' , 102 , 1920) 
-		, ('Bloor_Young' , 140 , 2014) , ('Rose_Dale' , 125 , 2167) , ('Museum' , 23 , 1693) , ('Queen_park' , 40 , 1540) , ('Wellesley' , 148 , 1606);
+		, ('Bloor_Young' , 140 , 2014) , ('Rose_Dale' , 125 , 2167) , ('Museum' , 23 , 1693) , ('Queen_park' , 40 , 1540) , ('Wellesley' , 148 , 1606) ,
+    ('Oak' , -50 , 2006) , ('Glory' , 150 , 20010) , ('Peace' , 20 , 1670);
 
 insert into station_sequence
 	values('Spadina','Spadina_TTC', 1 ,'0:10') ,
@@ -166,63 +169,13 @@ insert into station_sequence
 			('Museum','Queen_park', 8 ,'1:20') ,
 			('Wellesley','Queen_park', 7 ,'1:10') ,
 			('Wellesley','Bloor_Young', 5 ,'0:50'),
-      ('Spadina','Queen_park', 11 ,'1:50') ,
-			('Spadina','Bay', 9 ,'1:30') ,
+      ('Spadina_TTC','Peace', 5 ,'0:50') ,
+      ('Peace','Queen_park', 6 ,'1:00') ,
+			('Spadina','Oak', 5 ,'0:50') ,
+      ('Oak','Bay', 4 ,'0:40') ,
 			('Wellesley','Bay', 7 ,'1:10') ,
-			('Bay','Rose_Dale', 3 ,'0:30');
-
-      
-INSERT INTO path
-	values('Spa->RoseD1' , 'subway'),
-		  ('Spa->RoseD2' , 'taxi'),
-		  ('Spa_ttc->BYoung1' , 'subway'),
-		  ('Spa_ttc->BYoung2' , 'bus'),
-		  ('Spa_ttc->Queen' , 'taxi'),
-		  ('George->Queen' , 'bus'),
-		  ('Wells->RoseD1' , 'bus'),
-		  ('Wells->RoseD2' , 'taxi'),
-		  ('Spa->Queen' , 'bus');
-		  
-INSERT INTO position_in_path
-	values('Spadina' , 'Spa->RoseD1' , 'start'),
-		  ('Spadina_TTC' , 'Spa->RoseD1' , 'mid'),
-		  ('ST_George' , 'Spa->RoseD1' , 'mid'),
-		  ('Bay' , 'Spa->RoseD1' , 'mid'),
-		  ('Bloor_Young' , 'Spa->RoseD1' , 'mid'),
-		  ('Rose_Dale' , 'Spa->RoseD1' , 'end'),
-		  
-		  ('Spadina' , 'Spa->RoseD2' , 'start'),
-		  ('Bay' , 'Spa->RoseD2' , 'mid'),
-		  ('Rose_Dale' , 'Spa->RoseD2' , 'end'),
-		  
-		  ('Spadina_TTC' , 'Spa_ttc->BYoung1' , 'start'),
-		  ('ST_George' , 'Spa_ttc->BYoung1' , 'mid'),
-		  ('Bay' , 'Spa_ttc->BYoung1' , 'mid'),
-		  ('Bloor_Young' , 'Spa_ttc->BYoung1' , 'end'),
-		  
-		  ('Spadina_TTC' , 'Spa_ttc->BYoung2' , 'start'),
-		  ('ST_George' , 'Spa_ttc->BYoung2' , 'mid'),
-		  ('Bay' , 'Spa_ttc->BYoung2' , 'mid'),
-		  ('Bloor_Young' , 'Spa_ttc->BYoung2' , 'end'),
-		  
-		  ('Spadina_TTC' , 'Spa_ttc->Queen' , 'start'),
-		  ('Queen_park' , 'Spa_ttc->Queen' , 'end'),
-		  
-		  ('ST_George' , 'George->Queen' , 'start'),
-		  ('Museum' , 'George->Queen' , 'mid'),
-		  ('Queen_park' , 'George->Queen' , 'end'),
-		  
-		  ('Wellesley' , 'Wells->RoseD1' , 'start'),
-		  ('Bloor_Young' , 'Wells->RoseD1' , 'mid'),
-		  ('Rose_Dale' , 'Wells->RoseD1' , 'end'),
-		  
-		  ('Wellesley' , 'Wells->RoseD2' , 'start'),
-		  ('Bay' , 'Wells->RoseD2' , 'mid'),
-		  ('Rose_Dale' , 'Wells->RoseD2' , 'end'),
-		  
-		  ('Spadina' , 'Spa->Queen' , 'start'),
-		  ('Spadina_TTC' , 'Spa->Queen' , 'mid'),
-		  ('Queen_park' , 'Spa->Queen' , 'end')
+			('Bay','Glory', 1 ,'0:10'),
+      ('Glory','Rose_Dale', 3 ,'0:30');
 
 
 
@@ -259,3 +212,234 @@ VALUES
   ('subway', 'subway2', '123-12-3456');
 
 --------------------------------------------------------
+
+INSERT INTO path
+	values('Spa->RoseD1' , 'subway'),
+		  ('Spa->RoseD2' , 'taxi'),
+		  ('Spa_ttc->BYoung1' , 'subway'),
+		  ('Spa_ttc->BYoung2' , 'bus'),
+		  ('Spa_ttc->Queen' , 'taxi'),
+		  ('George->Queen' , 'bus'),
+		  ('Wells->RoseD1' , 'bus'),
+		  ('Wells->RoseD2' , 'taxi'),
+		  ('Spa->Queen' , 'bus');
+		  
+INSERT INTO position_in_path
+	values('Spadina' , 'Spa->RoseD1' , 'start'),
+		  ('Spadina_TTC' , 'Spa->RoseD1' , 'mid'),
+		  ('ST_George' , 'Spa->RoseD1' , 'mid'),
+		  ('Bay' , 'Spa->RoseD1' , 'mid'),
+		  ('Bloor_Young' , 'Spa->RoseD1' , 'mid'),
+		  ('Rose_Dale' , 'Spa->RoseD1' , 'end'),
+		  
+		  ('Spadina' , 'Spa->RoseD2' , 'start'),
+		  ('Oak' , 'Spa->RoseD2' , 'mid'),
+      ('Bay' , 'Spa->RoseD2' , 'mid'),
+      ('Glory' , 'Spa->RoseD2' , 'mid'),
+		  ('Rose_Dale' , 'Spa->RoseD2' , 'end'),
+		  
+		  ('Spadina_TTC' , 'Spa_ttc->BYoung1' , 'start'),
+		  ('ST_George' , 'Spa_ttc->BYoung1' , 'mid'),
+		  ('Bay' , 'Spa_ttc->BYoung1' , 'mid'),
+		  ('Bloor_Young' , 'Spa_ttc->BYoung1' , 'end'),
+		  
+		  ('Spadina_TTC' , 'Spa_ttc->BYoung2' , 'start'),
+		  ('ST_George' , 'Spa_ttc->BYoung2' , 'mid'),
+		  ('Bay' , 'Spa_ttc->BYoung2' , 'mid'),
+		  ('Bloor_Young' , 'Spa_ttc->BYoung2' , 'end'),
+		  
+		  ('Spadina_TTC' , 'Spa_ttc->Queen' , 'start'),
+      ('Peace' , 'Spa_ttc->Queen' , 'mid'),
+		  ('Queen_park' , 'Spa_ttc->Queen' , 'end'),
+		  
+		  ('ST_George' , 'George->Queen' , 'start'),
+		  ('Museum' , 'George->Queen' , 'mid'),
+		  ('Queen_park' , 'George->Queen' , 'end'),
+		  
+		  ('Wellesley' , 'Wells->RoseD1' , 'start'),
+		  ('Bloor_Young' , 'Wells->RoseD1' , 'mid'),
+		  ('Rose_Dale' , 'Wells->RoseD1' , 'end'),
+		  
+		  ('Wellesley' , 'Wells->RoseD2' , 'start'),
+		  ('Bay' , 'Wells->RoseD2' , 'mid'),
+      ('Glory' , 'Wells->RoseD2' , 'mid'),
+		  ('Rose_Dale' , 'Wells->RoseD2' , 'end'),
+		  
+		  ('Spadina' , 'Spa->Queen' , 'start'),
+		  ('Spadina_TTC' , 'Spa->Queen' , 'mid'),
+      ('Peace' , 'Spa->Queen' , 'mid'),
+		  ('Queen_park' , 'Spa->Queen' , 'end');
+
+
+
+
+-- insert into passengers
+-- 	values(4 , '444-44-3333');
+
+-- update transportation_receipt
+-- 	set  start_time='2022-10-11 22:22:00' , end_time='2022-10-11 23:22:00' , path_id='Spa->RoseD2' , transport_id='taxi1'
+
+-- insert into parking_receipt
+-- 	values(55 , 'parking1' , 'car4' , '2922-11-22 11:11:11' , null)
+
+-- update parking_receipt
+-- set end_time = '2922-11-22 13:11:11'
+-- where receipt_id = 55
+
+---------------------------------------------------------------------
+-- create transportations
+insert into passengers values(10 , '444-44-3333');
+insert into passengers values(11 , '222-22-2222');
+insert into passengers values(12 , '222-22-2222');
+insert into passengers values(13 , '333-33-3333');
+insert into passengers values(14 , '333-33-3333');
+insert into passengers values(15 , '333-33-3333');
+insert into passengers values(16 , '999-99-9999');
+insert into passengers values(17 , '567-56-5678');
+insert into passengers values(18 , '111-11-3333');
+insert into passengers values(19 , '444-44-1111');
+
+
+update transportation_receipt
+set  start_time='2023-10-11 22:22:00',
+end_time='2023-10-11 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '10';
+
+update transportation_receipt
+set  start_time='2023-10-10 10:22:00',
+end_time='2023-10-10 10:57:20',
+path_id='Spa_ttc->Queen',
+transport_id='taxi2'
+WHERE receipt_id = '11';
+
+update transportation_receipt
+set  start_time='2023-11-12 14:20:00',
+end_time='2023-11-12 17:22:30',
+path_id='Wells->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '12';
+
+update transportation_receipt
+set  start_time='2023-09-16 13:59:45',
+end_time='2023-09-16 14:22:12',
+path_id='Wells->RoseD2',
+transport_id='taxi3'
+WHERE receipt_id = '13';
+
+update transportation_receipt
+set  start_time='2023-08-15 14:59:45',
+end_time='2023-08-15 15:23:12',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus1'
+WHERE receipt_id = '14';
+
+update transportation_receipt
+set  start_time='2023-12-15 21:43:45',
+end_time='2023-12-15 22:20:12',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway1'
+WHERE receipt_id = '15';
+
+update transportation_receipt
+set  start_time='2023-11-20 23:43:45',
+end_time='2023-11-20 23:45:12',
+path_id='Spa->RoseD1',
+transport_id='subway2'
+WHERE receipt_id = '16';
+
+update transportation_receipt
+set  start_time='2023-11-14 19:12:45',
+end_time='2023-11-14 19:43:12',
+path_id='Spa->RoseD2',
+transport_id='taxi5'
+WHERE receipt_id = '17';
+
+update transportation_receipt
+set  start_time='2023-12-10 09:12:45',
+end_time='2023-12-10 09:43:12',
+path_id='Wells->RoseD2',
+transport_id='taxi4'
+WHERE receipt_id = '18';
+
+update transportation_receipt
+set  start_time='2023-12-10 09:15:45',
+end_time='2023-12-10 09:47:12',
+path_id='Spa->Queen',
+transport_id='bus3'
+WHERE receipt_id = '19';
+
+update transportation_receipt
+set  start_time='2023-12-13 19:32:45',
+end_time='2023-12-13 19:40:12',
+path_id='Spa->Queen',
+transport_id='bus4'
+WHERE receipt_id = '20';
+
+
+
+-----------------------------------------------------------------------
+-- insert parking receipts
+
+insert into parking_receipt values
+(20 , 'parking2' , 'car10' , '2023-12-12 10:11:11' , null),
+(21 , 'parking2' , 'car11' , '2023-12-12 11:11:11' , null),
+(22 , 'parking2' , 'car12' , '2023-12-12 13:11:11' , null),
+(23 , 'parking2' , 'car1' , '2023-12-12 14:11:11' , null),
+(24 , 'parking2' , 'car2' , '2023-12-12 15:11:11' , null),
+(25 , 'parking2' , 'car2' , '2023-12-12 15:11:11' , null),
+(26 , 'parking1' , 'car3' , '2023-10-11 10:23:22' , null),
+(27 , 'parking1' , 'car5' , '2023-10-10 09:23:22' , null),
+(28 , 'parking1' , 'car6' , '2023-09-29 11:23:22' , null),
+(29 , 'parking1' , 'car7' , '2023-09-22 16:16:54' , null)
+
+update parking_receipt
+set end_time = '2023-12-12 17:11:11'
+where receipt_id = 20;
+
+update parking_receipt
+set end_time = '2023-12-12 12:58:09'
+where receipt_id = 21;
+
+update parking_receipt
+set end_time = '2023-12-12 13:19:11'
+where receipt_id = 22;
+
+update parking_receipt
+set end_time = '2023-12-12 15:23:11'
+where receipt_id = 23;
+
+update parking_receipt
+set end_time = '2023-12-12 17:23:24'
+where receipt_id = 24;
+
+update parking_receipt
+set end_time = '2023-12-12 16:45:35'
+where receipt_id = 25;
+
+update parking_receipt
+set end_time = '2023-12-11 14:23:22'
+where receipt_id = 26;
+
+update parking_receipt
+set end_time = '2023-10-10 09:49:00'
+where receipt_id = 27;
+
+update parking_receipt
+set end_time = '2023-09-29 12:26:22'
+where receipt_id = 28;
+
+update parking_receipt
+set end_time = '2023-09-22 16:37:03'
+where receipt_id = 29;
+
+-------------------------------
+-- insert into service_receipt
+INSERT INTO service_receipt VALUES
+('water', 'house1', '2023-12-12', 30),
+('gas', 'house1', '2023-11-12', 31),
+('water', 'house2', '2023-11-12', 32),
+('water', 'house3', '2023-10-20', 33),
+('electricity', 'house4', '2023-12-20', 34),
+('gas', 'house5', '2023-12-24', 35);
