@@ -630,11 +630,23 @@ WHERE receipt_id = '130';
 -- insert parking receipts
 
 insert into parking_receipt values
+(290 , 'parking2' , 'car1' , '2023-11-12 9:00:00' , null),
+(291 , 'parking2' , 'car1' , '2023-11-10 10:00:00' , null);
+
+update parking_receipt
+set end_time = '2023-11-12 18:00:00'
+where receipt_id = 290;
+
+update parking_receipt
+set end_time = '2023-11-10 18:30:00'
+where receipt_id = 291;
+
+insert into parking_receipt values
 (200 , 'parking1' , 'car1' , '2023-12-12 10:00:00' , null),
 (201 , 'parking1' , 'car2' , '2023-12-12 11:00:00' , null),
 (202 , 'parking1' , 'car3' , '2023-12-12 12:00:00' , null),
 (203 , 'parking1' , 'car3' , '2023-12-12 13:00:00' , null),
-(204 , 'parking1' , 'car3' , '2023-12-12 14:00:00' , null)
+(204 , 'parking1' , 'car3' , '2023-12-12 14:00:00' , null);
 
 update parking_receipt
 set end_time = '2023-12-12 11:00:00'
@@ -666,8 +678,6 @@ insert into parking_receipt values
 (207 , 'parking2' , 'car10' , '2023-12-12 10:02:00' , null),
 (208 , 'parking2' , 'car9' , '2023-12-12 10:03:00' , null),
 (209 , 'parking2' , 'car8' , '2023-12-12 10:04:00' , null);
-
-select * from car
 
 update parking_receipt
 set end_time = '2023-12-12 11:00:00'
@@ -705,3 +715,12 @@ INSERT INTO service_receipt VALUES
 ('water', 'house3', '2023-10-20', 33),
 ('electricity', 'house4', '2023-12-20', 34),
 ('gas', 'house5', '2023-12-24', 35);
+
+insert into passengers values(131 , '999-99-9999');
+
+update transportation_receipt
+set  start_time='2023-10-11 22:22:00',
+end_time='2023-10-11 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '131';

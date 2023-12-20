@@ -24,3 +24,4 @@ SELECT * FROM query10('111-11-1111');
 -- to check if it works:
 -- select * from receipt
 -- where receipt.acc_id = '111-11-1111'
+-- order by issue_time
