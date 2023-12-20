@@ -724,3 +724,184 @@ end_time='2023-10-11 23:22:00',
 path_id='Spa->RoseD2',
 transport_id='taxi1'
 WHERE receipt_id = '131';
+
+insert into passengers values(134 , '111-11-1111');
+insert into passengers values(135 , '111-11-1111');
+insert into passengers values(136 , '111-11-1111');
+insert into passengers values(137 , '111-11-1111');
+insert into passengers values(138 , '111-11-1111');
+insert into passengers values(139 , '111-11-1111');
+
+update transportation_receipt
+set  start_time='2023-12-16 22:22:00',
+end_time='2023-12-16 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '134';
+
+update transportation_receipt
+set  start_time='2023-12-17 22:22:00',
+end_time='2023-12-17 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '135';
+
+update transportation_receipt
+set  start_time='2023-12-17 22:22:00',
+end_time='2023-12-17 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '136';
+
+update transportation_receipt
+set  start_time='2023-12-17 22:22:00',
+end_time='2023-12-17 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '137';
+
+update transportation_receipt
+set  start_time='2023-12-17 22:22:00',
+end_time='2023-12-17 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '138';
+
+update transportation_receipt
+set  start_time='2023-12-17 22:22:00',
+end_time='2023-12-17 23:22:00',
+path_id='Spa->RoseD2',
+transport_id='bus4'
+WHERE receipt_id = '139';
+
+update account
+set credit = credit + 100000;
+
+insert into parking_receipt values
+(250 , 'parking2' , 'car6' , '2022-06-25 9:00:00' , null),
+(251 , 'parking2' , 'car6' , '2022-06-24 10:00:00' , null);
+
+update parking_receipt
+set end_time = '2022-06-25 10:00:00'
+where receipt_id = 250;
+
+update parking_receipt
+set end_time = '2022-06-24 12:00:00'
+where receipt_id = 251;
+
+-- Insert statements for additional parking receipts with random cars, parking locations, and dates
+INSERT INTO parking_receipt (receipt_id, pid, cid, start_time, end_time)
+VALUES
+  (252, 'parking1', 'car1', '2023-01-01 08:00:00', null),
+  (253, 'parking2', 'car2', '2023-02-15 12:30:00', null),
+  (254, 'parking1', 'car3', '2023-04-10 15:45:00', null),
+  (255, 'parking2', 'car4', '2023-06-20 10:00:00', null),
+  (256, 'parking1', 'car5', '2023-08-05 14:15:00', null),
+  (257, 'parking2', 'car6', '2023-09-12 17:30:00', null),
+  (258, 'parking1', 'car7', '2023-10-18 11:45:00', null),
+  (259, 'parking2', 'car8', '2023-12-01 09:00:00', null),
+  (260, 'parking1', 'car9', '2023-02-28 13:00:00', null),
+  (261, 'parking2', 'car10', '2023-04-15 16:45:00', null);
+  -- Add more as needed...
+
+-- Update statements for extending the end_time of each new parking receipt
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 252;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 253;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 254;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 255;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 256;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 257;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 258;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 259;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 260;
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id = 261;
+
+INSERT INTO parking_receipt (receipt_id, pid, cid, start_time, end_time)
+VALUES
+  (2700, 'parking1', 'car9', '2023-12-13 09:00:00', null),
+  (2710, 'parking2', 'car9', '2023-12-14 09:00:00', null),
+  (2720, 'parking1', 'car10', '2023-12-14 09:00:00', null),
+  (2730, 'parking2', 'car10', '2023-12-15 09:00:00', null),
+  (2740, 'parking1', 'car4', '2022-06-03 09:00:00', null),
+  (2750, 'parking2', 'car4', '2022-06-04 09:00:00', null),
+  (2760, 'parking1', 'car2', '2023-09-23 09:00:00', null),
+  (2770, 'parking2', 'car2', '2023-09-24 09:00:00', null);
+
+UPDATE parking_receipt
+SET end_time = start_time + INTERVAL '2 hours'
+WHERE receipt_id >= 2700;
+
+insert into passengers values(1000 , '222-22-2222');
+insert into passengers values(1001 , '444-44-4444');
+insert into passengers values(1002 , '888-88-8888');
+insert into passengers values(1003 , '777-77-7777');
+
+insert into passengers values(1004 , '666-66-6666');
+insert into passengers values(1005 , '444-44-1111');
+insert into passengers values(1006 , '333-33-8888');
+
+insert into passengers values(1007 , '222-22-7777');
+insert into passengers values(1008 , '222-22-6666');
+
+insert into passengers values(1009 , '222-22-2222');
+insert into passengers values(1010 , '111-11-3333');
+insert into passengers values(1011 , '012-01-2345');
+insert into passengers values(1012 , '444-44-2222');
+insert into passengers values(1013 , '333-33-0000');
+
+update transportation_receipt
+set  start_time='2023-09-11 19:22:00',
+end_time='2023-09-11 20:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id >= 1000 and receipt_id <= 1003;
+
+update transportation_receipt
+set  start_time='2023-09-12 19:22:00',
+end_time='2023-09-12 20:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id >= 1004 and receipt_id <= 1006;
+
+update transportation_receipt
+set  start_time='2023-09-13 19:22:00',
+end_time='2023-09-13 20:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id >= 1007 and receipt_id <= 1008;
+
+update transportation_receipt
+set  start_time='2023-10-13 19:22:00',
+end_time='2023-10-13 20:22:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id >= 1009 and receipt_id <= 1013;
