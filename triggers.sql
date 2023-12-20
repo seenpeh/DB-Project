@@ -308,3 +308,25 @@ CREATE OR REPLACE TRIGGER transportation_receipt_trigger
 BEFORE UPDATE ON transportation_receipt
 FOR EACH ROW
 EXECUTE FUNCTION create_transportation_receipt();
+
+---------------------------------------------------------------
+-- check receipt_id format
+CREATE OR REPLACE FUNCTION check_receipt_id()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (((NEW.r_type = 'transportation') AND NOT (CAST(NEW.receipt_id AS VARCHAR) ~ '^1\d*'))
+	OR ((NEW.r_type = 'parking') AND NOT (CAST(NEW.receipt_id AS VARCHAR) ~ '^2\d*'))
+	OR ((NEW.r_type = 'service') AND NOT (CAST(NEW.receipt_id AS VARCHAR) ~ '^3\d*'))) THEN
+		RAISE EXCEPTION 'WRONG FORMAT';
+		RETURN NULL;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER receipt_id_trigger
+BEFORE INSERT ON receipt
+FOR EACH ROW
+EXECUTE FUNCTION check_receipt_id();
+
+---------------------------------------------------------------------

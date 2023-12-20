@@ -298,6 +298,37 @@ insert into passengers values(16 , '999-99-9999');
 insert into passengers values(17 , '567-56-5678');
 insert into passengers values(18 , '111-11-3333');
 insert into passengers values(19 , '444-44-1111');
+insert into passengers values(100 , '111-11-1111');
+insert into passengers values(101 , '222-22-2222');
+insert into passengers values(102 , '333-33-3333');
+insert into passengers values(103 , '567-56-5678');
+insert into passengers values(104 , '345-34-3456');
+insert into passengers values(105 , '123-12-3456');
+insert into passengers values(106 , '111-11-4444');
+insert into passengers values(107 , '222-22-5555');
+insert into passengers values(108 , '333-33-8888');
+insert into passengers values(109 , '222-22-7777');
+insert into passengers values(110 , '123-12-3456');
+insert into passengers values(111 , '111-11-1111');
+insert into passengers values(112 , '222-22-2222');
+insert into passengers values(113 , '333-33-3333');
+insert into passengers values(114 , '777-77-7777');
+insert into passengers values(115 , '888-88-8888');
+insert into passengers values(116 , '999-99-9999');
+insert into passengers values(117 , '777-77-7777');
+insert into passengers values(118 , '888-88-8888');
+insert into passengers values(119 , '999-99-9999');
+insert into passengers values(120 , '123-12-1234');
+insert into passengers values(121 , '333-33-0000');
+insert into passengers values(122 , '333-33-0000');
+insert into passengers values(123 , '333-33-0000');
+insert into passengers values(124 , '333-33-0000');
+insert into passengers values(125 , '333-33-0000');
+insert into passengers values(126 , '444-44-1111');
+insert into passengers values(127 , '444-44-1111');
+insert into passengers values(128 , '444-44-1111');
+insert into passengers values(129 , '444-44-1111');
+insert into passengers values(130 , '444-44-1111');
 
 
 update transportation_receipt
@@ -377,62 +408,293 @@ path_id='Spa->Queen',
 transport_id='bus4'
 WHERE receipt_id = '20';
 
+update transportation_receipt
+set  start_time='2023-12-12 14:00:00',
+end_time='2023-12-12 15:00:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '100';
+
+update transportation_receipt
+set  start_time='2023-12-12 14:00:00',
+end_time='2023-12-12 15:00:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '101';
+
+update transportation_receipt
+set  start_time='2023-12-12 14:00:00',
+end_time='2023-12-12 15:00:00',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '102';
+
+update transportation_receipt
+set  start_time='2023-12-12 17:00:00',
+end_time='2023-12-12 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '103';
+
+update transportation_receipt
+set  start_time='2023-12-12 17:00:00',
+end_time='2023-12-12 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '104';
+
+update transportation_receipt
+set  start_time='2023-12-12 17:00:00',
+end_time='2023-12-12 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '105';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 18:45:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '106';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 18:45:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '107';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 18:45:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '108';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 18:45:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '109';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 18:45:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '110';
+
+update transportation_receipt
+set  start_time='2023-12-11 12:22:51',
+end_time='2023-12-11 12:49:40',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '111';
+
+update transportation_receipt
+set  start_time='2023-12-11 12:22:51',
+end_time='2023-12-11 12:49:40',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '112';
+
+update transportation_receipt
+set  start_time='2023-12-11 12:22:51',
+end_time='2023-12-11 12:49:40',
+path_id='Spa->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '113';
+
+update transportation_receipt
+set  start_time='2023-12-11 19:02:01',
+end_time='2023-12-11 21:00:30',
+path_id='Spa_ttc->Queen',
+transport_id='taxi1'
+WHERE receipt_id = '114';
+
+update transportation_receipt
+set  start_time='2023-12-11 19:02:01',
+end_time='2023-12-11 21:00:30',
+path_id='Spa_ttc->Queen',
+transport_id='taxi1'
+WHERE receipt_id = '115';
+
+update transportation_receipt
+set  start_time='2023-12-11 19:02:01',
+end_time='2023-12-11 21:00:30',
+path_id='Spa_ttc->Queen',
+transport_id='taxi1'
+WHERE receipt_id = '116';
+
+update transportation_receipt
+set  start_time='2023-12-13 05:12:19',
+end_time='2023-12-13 06:10:00',
+path_id='Wells->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '117';
+
+update transportation_receipt
+set  start_time='2023-12-13 05:12:19',
+end_time='2023-12-13 06:10:00',
+path_id='Wells->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '118';
+
+update transportation_receipt
+set  start_time='2023-12-13 05:12:19',
+end_time='2023-12-13 06:10:00',
+path_id='Wells->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '119';
+
+update transportation_receipt
+set  start_time='2023-12-13 05:12:19',
+end_time='2023-12-13 06:10:00',
+path_id='Wells->RoseD2',
+transport_id='taxi1'
+WHERE receipt_id = '120';
+
+update transportation_receipt
+set  start_time='2023-12-08 14:00:00',
+end_time='2023-12-08 15:00:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus1'
+WHERE receipt_id = '121';
+
+update transportation_receipt
+set  start_time='2023-12-09 14:00:00',
+end_time='2023-12-09 15:00:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus1'
+WHERE receipt_id = '122';
+
+update transportation_receipt
+set  start_time='2023-12-10 14:00:00',
+end_time='2023-12-10 15:00:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus1'
+WHERE receipt_id = '123';
+
+update transportation_receipt
+set  start_time='2023-12-11 10:00:00',
+end_time='2023-12-11 12:00:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway1'
+WHERE receipt_id = '124';
+
+update transportation_receipt
+set  start_time='2023-12-12 10:00:00',
+end_time='2023-12-12 12:00:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway1'
+WHERE receipt_id = '125';
+
+update transportation_receipt
+set  start_time='2023-12-08 17:00:00',
+end_time='2023-12-08 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '126';
+
+update transportation_receipt
+set  start_time='2023-12-08 17:00:00',
+end_time='2023-12-08 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '127';
+
+update transportation_receipt
+set  start_time='2023-12-09 17:00:00',
+end_time='2023-12-09 17:30:00',
+path_id='Spa_ttc->BYoung1',
+transport_id='subway2'
+WHERE receipt_id = '128';
+
+update transportation_receipt
+set  start_time='2023-12-11 18:00:00',
+end_time='2023-12-11 19:00:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '129';
+
+update transportation_receipt
+set  start_time='2023-12-12 18:00:00',
+end_time='2023-12-12 19:00:00',
+path_id='Spa_ttc->BYoung2',
+transport_id='bus3'
+WHERE receipt_id = '130';
 
 
 -----------------------------------------------------------------------
 -- insert parking receipts
 
 insert into parking_receipt values
-(20 , 'parking2' , 'car10' , '2023-12-12 10:11:11' , null),
-(21 , 'parking2' , 'car11' , '2023-12-12 11:11:11' , null),
-(22 , 'parking2' , 'car12' , '2023-12-12 13:11:11' , null),
-(23 , 'parking2' , 'car1' , '2023-12-12 14:11:11' , null),
-(24 , 'parking2' , 'car2' , '2023-12-12 15:11:11' , null),
-(25 , 'parking2' , 'car2' , '2023-12-12 15:11:11' , null),
-(26 , 'parking1' , 'car3' , '2023-10-11 10:23:22' , null),
-(27 , 'parking1' , 'car5' , '2023-10-10 09:23:22' , null),
-(28 , 'parking1' , 'car6' , '2023-09-29 11:23:22' , null),
-(29 , 'parking1' , 'car7' , '2023-09-22 16:16:54' , null)
+(200 , 'parking1' , 'car1' , '2023-12-12 10:00:00' , null),
+(201 , 'parking1' , 'car2' , '2023-12-12 11:00:00' , null),
+(202 , 'parking1' , 'car3' , '2023-12-12 12:00:00' , null),
+(203 , 'parking1' , 'car3' , '2023-12-12 13:00:00' , null),
+(204 , 'parking1' , 'car3' , '2023-12-12 14:00:00' , null)
 
 update parking_receipt
-set end_time = '2023-12-12 17:11:11'
-where receipt_id = 20;
+set end_time = '2023-12-12 11:00:00'
+where receipt_id = 200;
 
 update parking_receipt
-set end_time = '2023-12-12 12:58:09'
-where receipt_id = 21;
+set end_time = '2023-12-12 12:00:00'
+where receipt_id = 201;
 
 update parking_receipt
-set end_time = '2023-12-12 13:19:11'
-where receipt_id = 22;
+set end_time = '2023-12-12 13:00:00'
+where receipt_id = 202;
 
 update parking_receipt
-set end_time = '2023-12-12 15:23:11'
-where receipt_id = 23;
+set end_time = '2023-12-12 14:00:00'
+where receipt_id = 203;
 
 update parking_receipt
-set end_time = '2023-12-12 17:23:24'
-where receipt_id = 24;
+set end_time = '2023-12-12 15:00:00'
+where receipt_id = 204;
 
 update parking_receipt
-set end_time = '2023-12-12 16:45:35'
-where receipt_id = 25;
+set end_time = '2023-12-12 16:00:00'
+where receipt_id = 205;
+
+insert into parking_receipt values
+(205 , 'parking2' , 'car12' , '2023-12-12 10:00:00' , null),
+(206 , 'parking2' , 'car11' , '2023-12-12 10:01:00' , null),
+(207 , 'parking2' , 'car10' , '2023-12-12 10:02:00' , null),
+(208 , 'parking2' , 'car9' , '2023-12-12 10:03:00' , null),
+(209 , 'parking2' , 'car8' , '2023-12-12 10:04:00' , null);
+
+select * from car
 
 update parking_receipt
-set end_time = '2023-12-11 14:23:22'
-where receipt_id = 26;
+set end_time = '2023-12-12 11:00:00'
+where receipt_id = 205;
 
 update parking_receipt
-set end_time = '2023-10-10 09:49:00'
-where receipt_id = 27;
+set end_time = '2023-12-12 17:00:00'
+where receipt_id = 206;
 
 update parking_receipt
-set end_time = '2023-09-29 12:26:22'
-where receipt_id = 28;
+set end_time = '2023-12-12 17:00:00'
+where receipt_id = 207;
 
 update parking_receipt
-set end_time = '2023-09-22 16:37:03'
-where receipt_id = 29;
+set end_time = '2023-12-12 17:00:00'
+where receipt_id = 208;
+
+update parking_receipt
+set end_time = '2023-12-12 17:00:00'
+where receipt_id = 209;
+
+insert into parking_receipt values
+(211 , 'parking2' , 'car12' , '2023-12-12 17:06:00' , null);
+
+update parking_receipt
+set end_time = '2023-12-12 17:30:00'
+where receipt_id = 211;
 
 -------------------------------
 -- insert into service_receipt
